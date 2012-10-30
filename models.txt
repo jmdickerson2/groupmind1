@@ -1,0 +1,28 @@
+Teacher
+	name
+	email
+	password
+	bio
+
+Student
+	name
+	email
+	password
+
+Course
+	title
+	summary
+	video
+	link
+	teacher_id
+
+Lesson
+	title
+	instructions
+	video
+	homework
+	course_id
+
+CoursesStudents
+	course_id
+	student_id
