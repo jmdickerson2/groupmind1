@@ -25,6 +25,14 @@ ActiveRecord::Schema.define(:version => 20121030183650) do
 
   add_index "courses", ["teacher_id"], :name => "index_courses_on_teacher_id"
 
+  create_table "courses_students", :force => true do |t|
+    t.integer "course_id"
+    t.integer "student_id"
+  end
+
+  add_index "courses_students", ["course_id"], :name => "index_courses_students_on_course_id"
+  add_index "courses_students", ["student_id"], :name => "index_courses_students_on_student_id"
+
   create_table "lessons", :force => true do |t|
     t.string   "title"
     t.text     "instructions"

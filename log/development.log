@@ -60,3 +60,56 @@ Migrating to CreateCoursesStudents (20121030183650)
   [1m[36m (0.0ms)[0m  [1mPRAGMA index_info('index_lessons_on_course_id')[0m
   [1m[35m (0.0ms)[0m  PRAGMA index_list("students")
   [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("teachers")[0m
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.2ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (2.5ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35m (1.8ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateTeachers (20121030182710)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.6ms)[0m  [1mCREATE TABLE "teachers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "email" varchar(255), "password" varchar(255), "bio" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20121030182710')
+  [1m[36m (1.7ms)[0m  [1mcommit transaction[0m
+Migrating to CreateStudents (20121030182743)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.5ms)[0m  [1mCREATE TABLE "students" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "email" varchar(255), "password" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20121030182743')
+  [1m[36m (1.9ms)[0m  [1mcommit transaction[0m
+Migrating to CreateCourses (20121030182835)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.5ms)[0m  [1mCREATE TABLE "courses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "summary" text, "video" varchar(255), "link" varchar(255), "teacher_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("courses")
+  [1m[36m (0.2ms)[0m  [1mCREATE INDEX "index_courses_on_teacher_id" ON "courses" ("teacher_id")[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20121030182835')
+  [1m[36m (1.7ms)[0m  [1mcommit transaction[0m
+Migrating to CreateLessons (20121030182956)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.7ms)[0m  [1mCREATE TABLE "lessons" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "instructions" text, "video" varchar(255), "homework" varchar(255), "course_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("lessons")
+  [1m[36m (0.2ms)[0m  [1mCREATE INDEX "index_lessons_on_course_id" ON "lessons" ("course_id")[0m
+  [1m[35m (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20121030182956')
+  [1m[36m (1.5ms)[0m  [1mcommit transaction[0m
+Migrating to CreateCoursesStudents (20121030183650)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.6ms)[0m  [1mCREATE TABLE "courses_students" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "course_id" integer, "student_id" integer) [0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("courses_students")
+  [1m[36m (0.2ms)[0m  [1mCREATE INDEX "index_courses_students_on_course_id" ON "courses_students" ("course_id")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("courses_students")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_courses_students_on_course_id')[0m
+  [1m[35m (0.2ms)[0m  CREATE INDEX "index_courses_students_on_student_id" ON "courses_students" ("student_id")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20121030183650')[0m
+  [1m[35m (2.5ms)[0m  commit transaction
+  [1m[36m (0.5ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("courses")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_courses_on_teacher_id')
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("courses_students")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_courses_students_on_student_id')
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_info('index_courses_students_on_course_id')[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("lessons")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_lessons_on_course_id')[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("students")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("teachers")[0m
