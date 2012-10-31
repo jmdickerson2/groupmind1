@@ -113,3 +113,4 @@ Migrating to CreateCoursesStudents (20121030183650)
   [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_lessons_on_course_id')[0m
   [1m[35m (0.0ms)[0m  PRAGMA index_list("students")
   [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("teachers")[0m
+Connecting to database specified by database.yml
