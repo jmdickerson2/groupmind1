@@ -1,7 +1,15 @@
-<h1>Dashboard</h1>
+<h1>Courses</h1>
+
+<h2>Explore and join courses</h2>
 
 <p>
 	<% @courses.each do |course| %>
 		<%= link_to course.title, course %>
 	<% end %>
 </p>
+
+<h2>Create your own course</h2>
+<%= link_to "Create a Course", new_course_path %>
+
+
+

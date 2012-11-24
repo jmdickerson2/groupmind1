@@ -1,2 +1,18 @@
-<h1>Lessons#new</h1>
-<p>Find me in app/views/lessons/new.html.erb</p>
+<h1>New Lesson!</h1>
+
+<h1>Create a new lesson</h1>
+
+<%= form_for [@courses, @lessons] do |f| %>
+	<p>
+		<%= f.label :title %><br/>
+		<%= f.text_field :title %>
+	</p>
+	<p>
+		<%= f.label :instructions %><br/>
+		<%= f.text_field :instructions, :size => 150 %>
+	</p>
+	<p>
+		<%= f.submit "Create" %>
+	</p>
+
+<% end %>

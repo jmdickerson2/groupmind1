@@ -1,0 +1,30 @@
+<h1>Welcome to <%= @course.title %></h1>
+
+<% if @course.teacher %>
+<h2>Your Teacher</h2>
+	<p><%= @course.teacher.name %></p>
+<% end %>
+
+<h2>What You'll Learn</h2>
+	<p><%= @course.summary %></p>
+
+<h2>Lessons</h2>
+
+	<p>
+		<% @course.lessons.each do |lesson| %>
+			<%= link_to lesson.title, 
+				course_lesson_path(@course, lesson) %>
+		<% end %>
+	</p> 
+
+<h2>Current Students</h2>
+
+	<p>
+		<% @course.students.each do |student| %>
+			<%= link_to student.name, student %>
+		<% end %>
+	</p>
+
+<p>
+<%= link_to "Add a Lesson", new_course_lesson_path(@course) %>
+</p>

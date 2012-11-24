@@ -1,25 +1,13 @@
 Groupmind1::Application.routes.draw do
 
 
-  get "students/index"
+  resources :students
 
-  get "students/new"
+  resources :teachers
 
-  get "students/profile"
-
-  get "lessons/index"
-
-  get "lessons/new"
-
-  get "lessons/edit"
-
-  get "teachers/index"
-
-  get "teachers/new"
-
-  get "teachers/profile"
-
-  resources :courses
+  resources :courses do
+    resources :lessons
+  end
 
   get "welcome/index"
 
